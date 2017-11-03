@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="TDD-1-Intro-03-Invalid-patient-create-xml"/>
+	<url value="https://touchstone.aegis.net/fhir/TestScript/TDD-1-Intro-03-Invalid-patient-create-xml"/>
+	<name value="TDD-1 - Intro - 03 - Invalid - Patient Create - XML"/>
+	<status value="active"/>
+	<date value="2017-10-28"/>
+	<publisher value="AEGIS.net, Inc."/>
+	<contact>
+		<name value="Touchstone Support"/>
+		<telecom>
+			<system value="email"/>
+			<value value="Touchstone_Support@aegis.net"/>
+			<use value="work"/>
+		</telecom>
+	</contact>
+	<description value="Test use of profiles with a Patient create in XML format using a fixture containing invalid contents. NOTE: the profile validation is expected to fail."/>
+	<copyright value="© AEGIS.net, Inc. 2015+"/>
+
+	<fixture id="patient-create">
+		<resource>
+			<reference value="../_reference/resources/patient-create-invalid.xml"/>
+		</resource>
+	</fixture>
+
+	<profile id="patient-profile">
+		<reference value="http://hl7.org/fhir/StructureDefinition/Patient"/>
+	</profile>
+
+	<test id="PatientCreateInvalidWithProfile">
+		<name value="PatientCreateInvalidWithProfile"/>
+		<description value="Create a Patient in XML format using an invalid static fixture. The expected response code is a 4xx error. The response payload should contain an OperationOutcome resource in XML format. PLEASE NOTE: THIS TEST IS EXPECTED TO FAIL."/>
+
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes"/>
+					<code value="create"/>
+				</type>
+				<resource value="Patient"/>
+				<description value="Create a Patient in XML format using an invalid static fixture"/>
+				<accept value="xml"/>
+				<contentType value="xml"/>
+				<sourceId value="patient-create"/>
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the sent Patient conforms to the base FHIR specification."/>
+				<direction value="request"/>
+				<validateProfileId value="patient-profile"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is a 4xx error."/>
+				<direction value="response"/>
+				<operator value="greaterThan"/>
+				<responseCode value="399"/>
+			</assert>
+		</action>
+	</test>
+</TestScript>

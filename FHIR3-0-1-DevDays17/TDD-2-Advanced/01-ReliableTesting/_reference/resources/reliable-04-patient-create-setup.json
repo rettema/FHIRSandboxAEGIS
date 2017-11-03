@@ -1,0 +1,24 @@
+{
+  "resourceType": "Patient",
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>TDD-2 - Advanced - Reliable - Patient Create Search Setup - JSON</p></div>"
+  },
+  "identifier": [
+    {
+      "value": "tdd-2-advanced-patient-create-search-setup-${D11}"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Reliable-Setup${C10}",
+      "given": [
+        "Jerry${C10}"
+      ]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-09-17"
+}

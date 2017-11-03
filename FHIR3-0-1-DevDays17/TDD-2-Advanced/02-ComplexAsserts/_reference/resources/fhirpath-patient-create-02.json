@@ -1,0 +1,24 @@
+{
+  "resourceType": "Patient",
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>TDD-2 - Advanced - Complex Asserts - FHIRPath Patient Create 02 - JSON</p></div>"
+  },
+  "identifier": [
+    {
+      "value": "tdd-2-complex-asserts-fhirpath-${D14}-02"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Fhirpath${C8}",
+      "given": [
+        "Testing${C10}02"
+      ]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-12-01"
+}

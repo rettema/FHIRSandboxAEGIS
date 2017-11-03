@@ -1,0 +1,67 @@
+<RuleSet>
+	<description value="Contains common rules for validating required versioning-related HTTP response headers." />
+	<rule id="assertETagIfSupported">
+		<required value="true" />
+		<reference value="../rule/AssertHeaderIfSupported.groovy"/>
+		<param>
+			<name value="header" />
+			<value value="ETag" />
+		</param>
+		<param>
+			<name value="headerOperator" />
+			<value value="notEmpty" />
+		</param>
+		<param>
+			<name value="confPathLabel" />
+			<value value="versioning" />
+		</param>					
+		<param>
+			<name value="confXPath" />
+			<value value="rest[mode/@value='server']/resource[type/@value='${param.resource}']/versioning" />
+		</param>
+		<param>
+			<name value="confJsonPath" />
+			<value value=".rest[?(@.mode=='server')].resource[?(@.type=='${param.resource}')].versioning" />
+		</param>
+		<param>
+			<name value="confOperator" />
+			<value value="in" />
+		</param>					
+		<param>
+			<name value="confPathValue" />
+			<value value="versioned,versioned-update" />
+		</param>
+	</rule>
+	<rule id="assertLastModifiedIfSupported">
+		<required value="true" />
+		<reference value="../rule/AssertHeaderIfSupported.groovy"/>
+		<param>
+			<name value="header" />
+			<value value="Last-Modified" />
+		</param>
+		<param>
+			<name value="headerOperator" />
+			<value value="notEmpty" />
+		</param>
+		<param>
+			<name value="confPathLabel" />
+			<value value="versioning" />
+		</param>					
+		<param>
+			<name value="confXPath" />
+			<value value="rest[mode/@value='server']/resource[type/@value='${param.resource}']/versioning" />
+		</param>
+		<param>
+			<name value="confJsonPath" />
+			<value value=".rest[?(@.mode=='server')].resource[?(@.type=='${param.resource}')].versioning" />
+		</param>
+		<param>
+			<name value="confOperator" />
+			<value value="in" />
+		</param>					
+		<param>
+			<name value="confPathValue" />
+			<value value="versioned,versioned-update" />
+		</param>
+	</rule>
+</RuleSet>

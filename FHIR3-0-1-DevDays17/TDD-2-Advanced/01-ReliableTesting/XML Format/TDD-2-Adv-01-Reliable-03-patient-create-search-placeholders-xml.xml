@@ -1,0 +1,131 @@
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="TDD-2-Adv-01-Reliable-03-patient-create-search-placeholders-xml"/>
+	<url value="https://touchstone.aegis.net/fhir/TestScript/TDD-2-Adv-01-Reliable-03-patient-create-search-placeholders-xml"/>
+	<name value="TDD-2 - Advanced - 01 - Reliable - 03 - Patient Create Search Placeholders - XML"/>
+	<status value="active"/>
+	<date value="2017-10-25"/>
+	<publisher value="AEGIS.net, Inc."/>
+	<contact>
+		<name value="Touchstone Support"/>
+		<telecom>
+			<system value="email"/>
+			<value value="Touchstone_Support@aegis.net"/>
+			<use value="work"/>
+		</telecom>
+	</contact>
+	<description value="Reliable Testing - Third test creating a static Patient fixture in XML format containing placeholder variables. Search for the created Patient using values stored as variables from the static fixture."/>
+	<copyright value="© AEGIS.net, Inc. 2015+"/>
+
+	<fixture id="patient-create">
+		<resource>
+			<reference value="../_reference/resources/reliable-03-patient-create-placeholders.xml"/>
+		</resource>
+	</fixture>
+
+	<variable>
+		<name value="searchParamIdentifier"/>
+		<path value="Patient/identifier/value" />
+		<sourceId value="patient-create" />
+	</variable>
+	<variable>
+		<name value="searchParamNameFamily"/>
+		<path value="Patient/name[1]/family" />
+		<sourceId value="patient-create" />
+	</variable>
+	<variable>
+		<name value="searchParamNameGiven"/>
+		<path value="Patient/name[1]/given[1]" />
+		<sourceId value="patient-create" />
+	</variable>
+	<variable>
+		<name value="searchParamBirthDate"/>
+		<path value="Patient/birthDate" />
+		<sourceId value="patient-create" />
+	</variable>
+
+	<test id="PatientCreate">
+		<name value="PatientCreate"/>
+		<description value="Create a Patient in XML format using a static fixture containing placeholder variables. The expected response code is 201 (Created). The response payload may contain the created Patient resource or an OperationOutcome resource in XML format."/>
+
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes"/>
+					<code value="create"/>
+				</type>
+				<resource value="Patient"/>
+				<description value="Create a Patient in XML format using a static fixture"/>
+				<accept value="xml"/>
+				<contentType value="xml"/>
+				<sourceId value="patient-create"/>
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 201(Created)."/>
+				<direction value="response"/>
+				<response value="created"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP Header Location is present."/>
+				<direction value="response"/>
+				<headerField value="Location"/>
+				<operator value="notEmpty"/>
+			</assert>
+		</action>
+	</test>
+
+	<test id="PatientSearch">
+		<name value="PatientSearch"/>
+		<description value="Search for the created Patient in XML format using the identifiers parameter and values from a stored variables. The expected response code is 200 (OK). The response payload is expected to be a Bundle searchset resource containing a single entry with the found Patient in XML format."/>
+
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes"/>
+					<code value="search"/>
+				</type>
+				<resource value="Patient"/>
+				<description value="Search for the created Patient in XML format"/>
+				<accept value="xml"/>
+				<contentType value="none"/>
+				<params value="?identifier=${searchParamIdentifier}&amp;family=${searchParamNameFamily}&amp;given=${searchParamNameGiven}&amp;birthdate=${searchParamBirthDate}"/>
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)."/>
+				<direction value="response"/>
+				<response value="okay"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the response payload contains the Bundle resource type."/>
+				<direction value="response"/>
+				<resource value="Bundle"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle type is searchset."/>
+				<direction value="response"/>
+				<operator value="equals"/>
+				<path value="Bundle/type"/>
+				<value value="searchset"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned searchset Bundle contains 1 entry. Warning only to account for potential duplicate Patient creations."/>
+				<direction value="response"/>
+				<operator value="equals"/>
+				<path value="Bundle/total"/>
+				<value value="1"/>
+				<warningOnly value="true"/>
+			</assert>
+		</action>
+	</test>
+</TestScript>

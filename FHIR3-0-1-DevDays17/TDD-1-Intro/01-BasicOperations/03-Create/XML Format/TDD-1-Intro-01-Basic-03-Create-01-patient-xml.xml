@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="TDD-1-Intro-01-Basic-03-Create-01-patient-xml"/>
+	<url value="https://touchstone.aegis.net/fhir/TestScript/TDD-1-Intro-01-Basic-03-Create-01-patient-xml"/>
+	<name value="TDD-1 - Intro - 01 - Basic - 03 - Create - Patient - XML"/>
+	<status value="active"/>
+	<date value="2017-10-28"/>
+	<publisher value="AEGIS.net, Inc."/>
+	<contact>
+		<name value="Touchstone Support"/>
+		<telecom>
+			<system value="email"/>
+			<value value="Touchstone_Support@aegis.net"/>
+			<use value="work"/>
+		</telecom>
+	</contact>
+	<description value="Test use of fixtures with a Patient create in XML format using a static fixture."/>
+	<copyright value="© AEGIS.net, Inc. 2015+"/>
+
+	<fixture id="patient-create">
+		<resource>
+			<reference value="../_reference/resources/patient-create-only.xml"/>
+		</resource>
+	</fixture>
+
+	<test id="PatientCreate">
+		<name value="PatientCreate"/>
+		<description value="Create a Patient in XML format using a static fixture. The expected response code is 201 (Created). The response payload may contain the created Patient resource or an OperationOutcome resource in XML format."/>
+
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes"/>
+					<code value="create"/>
+				</type>
+				<resource value="Patient"/>
+				<description value="Create a Patient in XML format using a static fixture"/>
+				<accept value="xml"/>
+				<contentType value="xml"/>
+				<sourceId value="patient-create"/>
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 201(Created)."/>
+				<direction value="response"/>
+				<response value="created"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP Header Location is present."/>
+				<direction value="response"/>
+				<headerField value="Location"/>
+				<operator value="notEmpty"/>
+			</assert>
+		</action>
+	</test>
+</TestScript>
