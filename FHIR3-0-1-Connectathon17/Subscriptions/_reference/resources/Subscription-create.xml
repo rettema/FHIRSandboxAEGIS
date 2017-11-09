@@ -14,7 +14,7 @@
 	<criteria value="Observation?code=http://loinc.org|39156-5" />
 	<channel>
 		<type value="rest-hook" />
-		<endpoint value="${channelResthookEndpointURI}" />
+		<endpoint value="${subscriptionUrl}" />
 		<payload value="application/fhir+xml" />
 	</channel>
 	<tag>

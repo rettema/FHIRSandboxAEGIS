@@ -9,6 +9,13 @@
     "status": "generated",
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Vital Signs - BMI</div>"
   },
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://happyvalley.com/observation",
+      "value": "${CD8}-abcd-1234-a2b4-${C12}"
+    }
+  ],
   "status": "final",
   "category": [
     {

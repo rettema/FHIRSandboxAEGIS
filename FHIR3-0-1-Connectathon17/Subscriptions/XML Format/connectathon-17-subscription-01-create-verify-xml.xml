@@ -60,9 +60,9 @@
 		<sourceId value="subscription-create"/>
 	</variable>
 	<variable>
-		<name value="subscriptionUri"/>
-		<path value="/Subscription/channel/endpoint"/>
-		<sourceId value="subscription-create"/>
+		<name value="subscriptionUrl"/>
+		<description value="Enter the rest-hook endpoint url for the Subscribing Client system." />
+		<hint value="[Rest-hook URL]" />
 	</variable>
 
 	<ruleset id="ruleset-versioning-headers">
@@ -129,10 +129,10 @@
 					<code value="delete"/>
 				</type>
 				<resource value="Subscription"/>
-				<description value="System-generated search and delete operations from conditional delete on type and uri to insure the Subscription does not exist on the server."/>
+				<description value="System-generated search and delete operations from conditional delete on type and url to insure the Subscription does not exist on the server."/>
 				<accept value="xml"/>
 				<contentType value="none"/>
-				<params value="?type=${subscriptionType}&amp;uri=${subscriptionUri}"/>
+				<params value="?type=${subscriptionType}&amp;url=${subscriptionUrl}"/>
 			</operation>
 		</action>
 	</setup>
@@ -191,7 +191,7 @@
 
 	<test id="02-SearchSubscription">
 		<name value="SearchSubscription"/>
-		<description value="Search for the created subscription using the search parameters type and uri XML format. The expected response is 200 (OK). The expected response content is a searchset Bundle with the created Subscription resource in XML format."/>
+		<description value="Search for the created subscription using the search parameters type and url XML format. The expected response is 200 (OK). The expected response content is a searchset Bundle with the created Subscription resource in XML format."/>
 
 		<action>
 			<operation>
@@ -200,10 +200,10 @@
 					<code value="search"/>
 				</type>
 				<resource value="Subscription"/>
-				<description value="Search for the created Subscription by the type and uri values and validate the contents."/>
+				<description value="Search for the created Subscription by the type and url values and validate the contents."/>
 				<accept value="xml"/>
 				<contentType value="none"/>
-				<params value="?type=${subscriptionType}&amp;uri=${subscriptionUri}"/>
+				<params value="?type=${subscriptionType}&amp;url=${subscriptionUrl}"/>
 				<responseId value="subscription-search-response"/>
 			</operation>
 		</action>
@@ -302,16 +302,17 @@
 				<direction value="response"/>
 				<operator value="equals"/>
 				<path value="Bundle/entry[1]/resource/Subscription/channel/endpoint"/>
-				<value value="${subscriptionUri}"/>
+				<value value="${subscriptionUrl}"/>
 			</assert>
 		</action>
 		<action>
 			<assert>
-				<description value="Confirm that the returned resource contains the expected updated status element and value of 'active'."/>
+				<description value="Confirm that the returned resource contains the expected updated status element and value of 'active'. Warning only for initial testing."/>
 				<direction value="response"/>
 				<operator value="equals"/>
 				<path value="Bundle/entry[1]/resource/Subscription/status"/>
 				<value value="active"/>
+				<warningOnly value="true"/>
 			</assert>
 		</action>
 	</test>
@@ -420,16 +421,17 @@
 				<direction value="response"/>
 				<operator value="equals"/>
 				<path value="Subscription/channel/endpoint"/>
-				<value value="${subscriptionUri}"/>
+				<value value="${subscriptionUrl}"/>
 			</assert>
 		</action>
 		<action>
 			<assert>
-				<description value="Confirm that the returned resource contains the expected updated status element and value of 'active'."/>
+				<description value="Confirm that the returned resource contains the expected updated status element and value of 'active'. Warning only for initial testing."/>
 				<direction value="response"/>
 				<operator value="equals"/>
 				<path value="Subscription/status"/>
 				<value value="active"/>
+				<warningOnly value="true"/>
 			</assert>
 		</action>
 	</test>
