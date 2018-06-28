@@ -1,0 +1,37 @@
+[
+  {
+    "accessToken": "ffc974c5-3ff6-480a-a9c7-970873afbf14",
+    "resourceId": "",
+    "familyName": "XXX_Helleman",
+    "bsn": "999911120",
+    "qualificationScript": ""
+  },
+  {
+    "accessToken": "0aed465d-aab0-4417-9b3c-e6f635892fea",
+    "resourceId": "",
+    "familyName": "XXX_Cevat",
+    "bsn": "999911132",
+    "qualificationScript": ""
+  },
+  {
+    "accessToken": "2588b52d-c5ef-4cfa-84d4-acf8419a72e9",
+    "resourceId": "example-eAfspraken-kwalificatie1",
+    "familyName": "XXX_Verweij",
+    "bsn": "999911533",
+    "qualificationScript": "eAfspraken"
+  },
+  {
+    "accessToken": "48a1fb8a-82e5-4e72-b560-4924279bb57e",
+    "resourceId": "example-eAfspraken-kwalificatie2",
+    "familyName": "XXX_Zalentein",
+    "bsn": "999911582",
+    "qualificationScript": "eAfspraken"
+  },
+  {
+    "accessToken": "ed772f1e-5c86-4a0b-af36-4a05a2059191",
+    "resourceId": "example-eAfspraken-kwalificatie3",
+    "familyName": "XXX_Egmond",
+    "bsn": "999911594",
+    "qualificationScript": "eAfspraken"
+  }
+]
