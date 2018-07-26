@@ -1,37 +1,79 @@
 [
   {
-    "accessToken": "ffc974c5-3ff6-480a-a9c7-970873afbf14",
-    "resourceId": "",
-    "familyName": "XXX_Helleman",
-    "bsn": "999911120",
-    "qualificationScript": ""
+    "accessToken":"2588b52d-c5ef-4cfa-84d4-acf8419a72e9",
+    "resourceId":"example-eAfspraken-kwalificatie1",
+    "familyName":"XXX_Verweij",
+    "bsn":"999911533",
+    "qualificationScript":"eAfspraken"
   },
   {
-    "accessToken": "0aed465d-aab0-4417-9b3c-e6f635892fea",
-    "resourceId": "",
-    "familyName": "XXX_Cevat",
-    "bsn": "999911132",
-    "qualificationScript": ""
+    "accessToken":"48a1fb8a-82e5-4e72-b560-4924279bb57e",
+    "resourceId":"example-eAfspraken-kwalificatie2",
+    "familyName":"XXX_Zalentein",
+    "bsn":"999911582",
+    "qualificationScript":"eAfspraken"
   },
   {
-    "accessToken": "2588b52d-c5ef-4cfa-84d4-acf8419a72e9",
-    "resourceId": "example-eAfspraken-kwalificatie1",
-    "familyName": "XXX_Verweij",
-    "bsn": "999911533",
-    "qualificationScript": "eAfspraken"
+    "accessToken":"ed772f1e-5c86-4a0b-af36-4a05a2059191",
+    "resourceId":"example-eAfspraken-kwalificatie3",
+    "familyName":"XXX_Egmond",
+    "bsn":"999911594",
+    "qualificationScript":"eAfspraken"
   },
   {
-    "accessToken": "48a1fb8a-82e5-4e72-b560-4924279bb57e",
-    "resourceId": "example-eAfspraken-kwalificatie2",
-    "familyName": "XXX_Zalentein",
-    "bsn": "999911582",
-    "qualificationScript": "eAfspraken"
+    "accessToken":"f92b6141-55db-46d5-a3ae-874b69907d22",
+    "resourceId":"example-pdfa-kwalificatie1",
+    "familyName":"XXX_Baltus",
+    "bsn":"999910796",
+    "qualificationScript":"PDF/A"
   },
   {
-    "accessToken": "ed772f1e-5c86-4a0b-af36-4a05a2059191",
-    "resourceId": "example-eAfspraken-kwalificatie3",
-    "familyName": "XXX_Egmond",
-    "bsn": "999911594",
-    "qualificationScript": "eAfspraken"
+    "accessToken":"aae7b5aa-d796-4fba-b4d3-852d9043ee66",
+    "resourceId":"example-pdfa-kwalificatie2",
+    "familyName":"XXX_Schulte",
+    "bsn":"999910784",
+    "qualificationScript":"PDF/A"
+  },
+  {
+    "accessToken":"84b0da5a-3816-49ba-9df4-88bc089dd401",
+    "resourceId":"example-pdfa-kwalificatie3",
+    "familyName":"XXX_Ellens",
+    "bsn":"999910863",
+    "qualificationScript":"PDF/A"
+  },
+  {
+    "accessToken":"93cde269-ce35-4077-a39d-19296670e949",
+    "resourceId":"medmij-bgz-patient-ts-01",
+    "familyName":"XXX_Helleman",
+    "bsn":"999911120",
+    "qualificationScript":"BGZ"
+  },
+  {
+    "accessToken":"6056a9eb-da6a-45dc-b557-e854e138af8f",
+    "resourceId":"medmij-bgz-patient-ts-02",
+    "familyName":"XXX_Mesker",
+    "bsn":"999911284",
+    "qualificationScript":"BGZ"
+  },
+  {
+    "accessToken":"d9f8d61b-c236-489f-aba5-b3bebd312c30",
+    "resourceId":"selfmeasurement-patient-kwalificatie1",
+    "familyName":"XXX_Bourgonjee",
+    "bsn":"999911302",
+    "qualificationScript":"Zelfmetingen"
+  },
+  {
+    "accessToken":"14bc6cc6-7b7b-4c29-b662-c5284d76cf3c",
+    "resourceId":"laboratoryresults-patient-kwalificatie1",
+    "familyName":"XXX_Aantrekker",
+    "bsn":"999910450",
+    "qualificationScript":"Lab"
+  },
+  {
+    "accessToken":"0aed465d-aab0-4417-9b3c-e6f635892fea",
+    "resourceId":"gpdata-patient-kwalificatie1",
+    "familyName":"XXX_Cevat",
+    "bsn":"999911132",
+    "qualificationScript":"Huisarts"
   }
 ]
