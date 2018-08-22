@@ -1,0 +1,24 @@
+{
+  "resourceType": "Patient",
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>TDD-2 - Advanced - Reliable - Patient Create Search Variables - JSON</p></div>"
+  },
+  "identifier": [
+    {
+      "value": "tdd-2-advanced-patient-create-search-variables-json"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Reliable-Variables",
+      "given": [
+        "Jackie"
+      ]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-02-03"
+}

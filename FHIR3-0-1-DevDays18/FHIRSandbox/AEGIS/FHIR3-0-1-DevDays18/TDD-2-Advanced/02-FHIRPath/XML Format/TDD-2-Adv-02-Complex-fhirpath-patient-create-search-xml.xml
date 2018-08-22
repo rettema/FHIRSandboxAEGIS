@@ -1,0 +1,217 @@
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="TDD-2-Adv-02-Complex-fhirpath-patient-create-search-xml" />
+	<url value="https://touchstone.aegis.net/fhir/TestScript/TDD-2-Adv-02-Complex-fhirpath-patient-create-search-xml" />
+	<name value="TDD-2 - Advanced - 02 - Complex Asserts - FHIRPath Patient Create Search - XML" />
+	<status value="active" />
+	<date value="2018-04-27" />
+	<publisher value="AEGIS.net, Inc." />
+	<contact>
+		<name value="Touchstone Support" />
+		<telecom>
+			<system value="email" />
+			<value value="Touchstone_Support@aegis.net" />
+			<use value="work" />
+		</telecom>
+	</contact>
+	<description value="Complex Asserts Testing - Demonstrate the use of FHIRPath expressions with a Patient search. The actual test is a simple search for the created Patients in XML format using the family name from the static fixtures." />
+	<copyright value="© AEGIS.net, Inc. 2015+" />
+	<fixture id="patient-create-01">
+		<resource>
+			<reference value="../_reference/resources/fhirpath-patient-create-01.xml" />
+		</resource>
+	</fixture>
+	<fixture id="patient-create-02">
+		<resource>
+			<reference value="../_reference/resources/fhirpath-patient-create-02.xml" />
+		</resource>
+	</fixture>
+	<profile id="bundle-profile">
+		<reference value="http://hl7.org/fhir/StructureDefinition/Bundle" />
+	</profile>
+	<variable>
+		<name value="searchBundleTotal" />
+		<path value="/Bundle/total" />
+		<sourceId value="patient-search-response" />
+	</variable>
+	<variable>
+		<name value="searchFamilyName01" />
+		<path value="/Patient/name[1]/family" />
+		<sourceId value="patient-create-01" />
+	</variable>
+	<variable>
+		<name value="searchGivenName01" />
+		<path value="/Patient/name[1]/given[1]" />
+		<sourceId value="patient-create-01" />
+	</variable>
+	<variable>
+		<name value="searchFamilyName02" />
+		<path value="/Patient/name[1]/family" />
+		<sourceId value="patient-create-02" />
+	</variable>
+	<variable>
+		<name value="searchGivenName02" />
+		<path value="/Patient/name[1]/given[1]" />
+		<sourceId value="patient-create-02" />
+	</variable>
+	<setup>
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="delete" />
+				</type>
+				<resource value="Patient" />
+				<description value="System-generated search and delete operations from conditional delete to ensure the first Patient does not exist on the server." />
+				<accept value="xml" />
+				<contentType value="none" />
+				<params value="?family=${searchFamilyName01}&amp;given=${searchGivenName01}" />
+			</operation>
+		</action>
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="create" />
+				</type>
+				<description value="Create the first Patient resource needed for test." />
+				<accept value="xml" />
+				<contentType value="xml" />
+				<sourceId value="patient-create-01" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 201(Created)." />
+				<response value="created" />
+			</assert>
+		</action>
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="delete" />
+				</type>
+				<resource value="Patient" />
+				<description value="System-generated search and delete operations from conditional delete to ensure the second Patient does not exist on the server." />
+				<accept value="xml" />
+				<contentType value="none" />
+				<params value="?family=${searchFamilyName02}&amp;given=${searchGivenName02}" />
+			</operation>
+		</action>
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="create" />
+				</type>
+				<description value="Create the second Patient resource needed for test." />
+				<accept value="xml" />
+				<contentType value="xml" />
+				<sourceId value="patient-create-02" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 201(Created)." />
+				<response value="created" />
+			</assert>
+		</action>
+	</setup>
+	<test id="PatientSearch">
+		<name value="PatientSearch" />
+		<description value="Search for the setup created Patients in XML format. The expected response code is 200 (OK). The expected response payload is a Bundle searchset resource in XML format." />
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="search" />
+				</type>
+				<resource value="Patient" />
+				<description value="Search for the setup created Patients. The destination server must support the family search parameter." />
+				<accept value="xml" />
+				<contentType value="none" />
+				<params value="?family=${searchFamilyName01}" />
+				<responseId value="patient-search-response" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)." />
+				<direction value="response" />
+				<response value="okay" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned format is XML." />
+				<direction value="response" />
+				<contentType value="xml" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned resource type is Bundle." />
+				<direction value="response" />
+				<resource value="Bundle" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Validate that the returned resource conforms to the base FHIR Bundle profile." />
+				<direction value="response" />
+				<validateProfileId value="bundle-profile" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle.type is searchset." />
+				<direction value="response" />
+				<path value="Bundle/type" />
+				<value value="searchset" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Using XMLPath against Bundle.total, confirm that there is at least one record returned." />
+				<direction value="response" />
+				<operator value="greaterThan" />
+				<path value="Bundle/total" />
+				<value value="0" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Using XMLPath against Bundle.entry, confirm that there is at least one record returned." />
+				<direction value="response" />
+				<operator value="greaterThan" />
+				<path value="count(//Bundle/entry)" />
+				<value value="0" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Using FHIRPath against Bundle.total, confirm that there is at least one record returned." />
+				<direction value="response" />
+				<expression value="Bundle.total.toInteger()" />
+				<operator value="greaterThan" />
+				<value value="0" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Using FHIRPath against Bundle.entry, confirm that there is at least one record returned." />
+				<direction value="response" />
+				<expression value="Bundle.entry.count()" />
+				<operator value="greaterThan" />
+				<value value="0" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Using FHIRPath only, confirm that the Bundle total value matches or is greater than the number of entries in the Bundle." />
+				<direction value="response" />
+				<expression value="Bundle.total.toInteger() &gt;= Bundle.entry.count()" />
+			</assert>
+		</action>
+	</test>
+</TestScript>

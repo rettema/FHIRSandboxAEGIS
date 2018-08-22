@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="basic-05-delete-patient-read-json" />
+	<url value="https://touchstone.aegis.net/fhir/TestScript/basic-05-delete-patient-read-json" />
+	<name value="Basic Operations - 05 - Delete - Patient with Read - JSON" />
+	<status value="active" />
+	<date value="2018-04-17" />
+	<publisher value="AEGIS.net, Inc." />
+	<contact>
+		<name value="Touchstone Support" />
+		<telecom>
+			<system value="email" />
+			<value value="Touchstone_Support@aegis.net" />
+			<use value="work" />
+		</telecom>
+	</contact>
+	<description value="Test the Patient delete in JSON format using a static fixture. Verify results of the Patient delete using a read operation. Also show use of setup and variables to initialize the system under test." />
+	<copyright value="© AEGIS.net, Inc. 2015+" />
+	<fixture id="patient-create">
+		<resource>
+			<reference value="../_reference/resources/patient-create.json" />
+		</resource>
+	</fixture>
+	<variable>
+		<name value="patientResourceId" />
+		<path value=".id" />
+		<sourceId value="patient-create-search-response" />
+	</variable>
+	<variable>
+		<name value="patientIdentifier" />
+		<path value=".identifier[0].value" />
+		<sourceId value="patient-create" />
+	</variable>
+	<variable>
+		<name value="patientFamilyName" />
+		<path value=".name[0].family" />
+		<sourceId value="patient-create" />
+	</variable>
+	<variable>
+		<name value="patientGivenName" />
+		<path value=".name[0].given[0]" />
+		<sourceId value="patient-create" />
+	</variable>
+	<setup>
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="delete" />
+				</type>
+				<resource value="Patient" />
+				<description value="System-generated search and delete operations from conditional delete on patient name to insure the patient does not exist on the server." />
+				<accept value="json" />
+				<contentType value="none" />
+				<params value="?given=${patientGivenName}&amp;family=${patientFamilyName}" />
+			</operation>
+		</action>
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="delete" />
+				</type>
+				<resource value="Patient" />
+				<description value="System-generated search and delete operations from conditional delete on patient identifier to insure the patient does not exist on the server." />
+				<accept value="json" />
+				<contentType value="none" />
+				<params value="?identifier=${patientIdentifier}" />
+			</operation>
+		</action>
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="create" />
+				</type>
+				<resource value="Patient" />
+				<description value="Create the Patient resource in JSON format on the destination server for subsequent testing of the delete operation." />
+				<accept value="json" />
+				<contentType value="json" />
+				<sourceId value="patient-create" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 201(Created)." />
+				<direction value="response" />
+				<responseCode value="201" />
+			</assert>
+		</action>
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="search" />
+				</type>
+				<resource value="Patient" />
+				<description value="Search for the created Patient by the unique identifier." />
+				<accept value="json" />
+				<contentType value="none" />
+				<params value="?identifier=${patientIdentifier}" />
+				<responseId value="patient-create-search-response" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)." />
+				<direction value="response" />
+				<responseCode value="200" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP Header Content-Type contains the FHIR mime-type 'application/fhir+json'." />
+				<contentType value="json" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned resource type is Bundle." />
+				<resource value="Bundle" />
+			</assert>
+		</action>
+	</setup>
+	<test id="01-DeletePatient">
+		<name value="DeletePatient" />
+		<description
+			value="Test the delete operation of a known valid resource instance. The expected response is 200 (OK) when content is returned; e.g. OperationOutcome, or 204 (No Content) when the content is empty. A 404 (Not Found) is also allowed. Subsequent read and search operations are executed to confirm the deleted resource is not returned." />
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="delete" />
+				</type>
+				<resource value="Patient" />
+				<description value="Patient delete operation of a known valid resource instance." />
+				<accept value="none" />
+				<contentType value="none" />
+				<params value="/${patientResourceId}" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200 (OK), 204 (No Content) or 404 (Not Found)." />
+				<direction value="response" />
+				<operator value="in" />
+				<responseCode value="200,204,404" />
+			</assert>
+		</action>
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="read" />
+				</type>
+				<resource value="Patient" />
+				<description value="Read the deleted Patient and verify the response is 410 (Gone) or 404 (Not Found) for servers that do not support versioning. The Accept header JSON format is defined for an optionally returned OperationOutcome resource." />
+				<accept value="json" />
+				<contentType value="none" />
+				<params value="/${patientResourceId}" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 404(Not Found) or 410(Gone)." />
+				<direction value="response" />
+				<operator value="in" />
+				<responseCode value="404,410" />
+			</assert>
+		</action>
+	</test>
+</TestScript>

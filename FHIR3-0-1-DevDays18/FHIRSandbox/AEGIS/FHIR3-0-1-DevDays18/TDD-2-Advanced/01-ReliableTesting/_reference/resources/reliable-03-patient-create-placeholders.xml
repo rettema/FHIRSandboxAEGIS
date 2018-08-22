@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patient xmlns="http://hl7.org/fhir">
+	<text>
+		<status value="additional"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>TDD-2 - Advanced - Reliable - Patient Create Search Placeholders - XML</p>
+		</div>
+	</text>
+	<identifier>
+		<value value="tdd-2-advanced-patient-create-search-placeholders-${D11}"/>
+	</identifier>
+	<active value="true"/>
+	<name>
+		<use value="official"/>
+		<family value="Reliable-Placeholders${C7}"/>
+		<given value="Melinda${C7}"/>
+	</name>
+	<gender value="female"/>
+	<birthDate value="1989-12-09"/>
+</Patient>

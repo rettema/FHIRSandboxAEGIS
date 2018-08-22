@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="TDD-1-Intro-02-Basic-01-Read-patient-xml" />
+	<url value="https://touchstone.aegis.net/fhir/TestScript/TDD-1-Intro-02-Basic-01-Read-patient-xml" />
+	<name value="TDD-1 - Intro - 02 - Basic - 01 - Read - Patient - XML" />
+	<status value="active" />
+	<date value="2018-04-27" />
+	<publisher value="AEGIS.net, Inc." />
+	<contact>
+		<name value="Touchstone Support" />
+		<telecom>
+			<system value="email" />
+			<value value="Touchstone_Support@aegis.net" />
+			<use value="work" />
+		</telecom>
+	</contact>
+	<description value="Test Patient read only in XML format with hard-coded resource id of 'example'." />
+	<copyright value="© AEGIS.net, Inc. 2015+" />
+	<test id="ReadPatient">
+		<name value="ReadPatient" />
+		<description value="Read the Patient in JSON format with the resource id of 'example'. The expected response code is 200 (OK) with a response payload containing the Patient resource in XML format." />
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="read" />
+				</type>
+				<resource value="Patient" />
+				<description value="Read the example Patient resource" />
+				<accept value="xml" />
+				<contentType value="none" />
+				<params value="/example" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)." />
+				<direction value="response" />
+				<response value="okay" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned content format is XML ('application/fhir+xml')." />
+				<direction value="response" />
+				<contentType value="xml" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned resource type is Patient." />
+				<direction value="response" />
+				<resource value="Patient" />
+			</assert>
+		</action>
+	</test>
+</TestScript>

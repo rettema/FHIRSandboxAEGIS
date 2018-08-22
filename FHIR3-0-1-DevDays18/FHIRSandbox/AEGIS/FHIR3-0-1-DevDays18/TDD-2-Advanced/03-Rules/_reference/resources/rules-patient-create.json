@@ -1,0 +1,30 @@
+{
+  "resourceType": "Patient",
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>TDD-2 - Advanced - Complex Asserts - Rules Patient Create - JSON</p></div>"
+  },
+  "identifier": [
+    {
+      "value": "tdd-2-complex-asserts-rules-${D9}"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Rules{C9}",
+      "given": [
+        "Testing${C9}"
+      ]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-06-09",
+  "multipleBirthBoolean": false,
+  "generalPractitioner": [
+    {
+      "display": "Dr James Feelbetter, MD"
+    }
+  ]
+}

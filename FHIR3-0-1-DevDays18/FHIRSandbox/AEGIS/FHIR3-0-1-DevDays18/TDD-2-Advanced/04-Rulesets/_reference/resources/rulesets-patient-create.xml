@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patient xmlns="http://hl7.org/fhir">
+	<text>
+		<status value="additional"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>TDD-2 - Advanced - Complex Asserts - Rulesets Patient Create - XML</p>
+		</div>
+	</text>
+	<identifier>
+		<value value="tdd-2-complex-asserts-rulesets-${D11}"/>
+	</identifier>
+	<active value="true"/>
+	<name>
+		<use value="official"/>
+		<family value="Rulesets${C11}"/>
+		<given value="Testing${C11}"/>
+	</name>
+	<gender value="female"/>
+	<birthDate value="1973-03-07"/>
+	<multipleBirthBoolean value="false"/>
+	<generalPractitioner> 
+		<display value="Dr Abbie Normal, MD"/> 
+	</generalPractitioner> 
+</Patient>

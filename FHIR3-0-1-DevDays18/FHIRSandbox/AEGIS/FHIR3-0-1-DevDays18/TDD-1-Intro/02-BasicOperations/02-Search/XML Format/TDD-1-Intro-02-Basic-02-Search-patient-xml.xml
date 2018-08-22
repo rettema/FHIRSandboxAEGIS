@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="TDD-1-Intro-02-Basic-02-Search-patient-xml" />
+	<url value="https://touchstone.aegis.net/fhir3-0-1/TestScript/TDD-1-Intro-02-Basic-02-Search-patient-xml" />
+	<name value="TDD-1 - Intro - 02 - Basic - 02 - Search - Patient - XML" />
+	<status value="active" />
+	<date value="2018-04-27" />
+	<publisher value="AEGIS.net, Inc." />
+	<contact>
+		<name value="Touchstone Support" />
+		<telecom>
+			<system value="email" />
+			<value value="Touchstone_Support@aegis.net" />
+			<use value="work" />
+		</telecom>
+	</contact>
+	<description value="Test Patient search only in XML format with a hard-coded 'family' search parameter equal to 'Chalmers'." />
+	<copyright value="© AEGIS.net, Inc. 2015+" />
+	<test id="PatientSearch">
+		<name value="PatientSearch" />
+		<description value="Search for Patient resources in XML format with the 'family' search parameter equal to 'Chalmers'. The expected response code is 200 (OK) with a response payload containing a searchset Bundle resource in XML format." />
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="search" />
+				</type>
+				<resource value="Patient" />
+				<description value="Search for Patients with family name equal to 'Chalmers'." />
+				<accept value="xml" />
+				<contentType value="none" />
+				<params value="?family=Chalmers" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)." />
+				<direction value="response" />
+				<response value="okay" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned content format is XML ('application/fhir+xml')." />
+				<direction value="response" />
+				<contentType value="xml" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the response payload contains the Bundle resource type." />
+				<direction value="response" />
+				<resource value="Bundle" />
+			</assert>
+		</action>
+	</test>
+</TestScript>

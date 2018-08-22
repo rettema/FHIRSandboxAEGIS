@@ -1,0 +1,24 @@
+{
+  "resourceType": "Patient",
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>TDD-1 - Intro - 03 - Patient Create Only - JSON</p></div>"
+  },
+  "identifier": [
+    {
+      "value": "tdd-1-intro-03-patient-create-only-json"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Testcreatejson",
+      "given": [
+        "Jennifer"
+      ]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-01-02"
+}

@@ -1,0 +1,24 @@
+{
+  "resourceType": "Patient",
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>TDD-1 - Intro - 05 - Patient Delete - JSON</p></div>"
+  },
+  "identifier": [
+    {
+      "value": "tdd-1-intro-05-patient-delete-json"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Testdeletejson",
+      "given": [
+        "Florence"
+      ]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-06-15"
+}

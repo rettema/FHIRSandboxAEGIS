@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="readonly-02-search-patient-json" />
+	<url value="https://touchstone.aegis.net/fhir3-0-1/TestScript/readonly-02-search-patient-json" />
+	<name value="Read Only Operations - 02 - Search - Patient - JSON" />
+	<status value="active" />
+	<date value="2018-05-19" />
+	<publisher value="AEGIS.net, Inc." />
+	<contact>
+		<name value="Touchstone Support" />
+		<telecom>
+			<system value="email" />
+			<value value="Touchstone_Support@aegis.net" />
+			<use value="work" />
+		</telecom>
+	</contact>
+	<description value="Test Patient search only in JSON format prompting for 'family', 'given' and 'identifier' search parameters." />
+	<copyright value="© AEGIS.net, Inc. 2015+" />
+	<profile id="bundle-profile">
+		<reference value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+	</profile>
+	<variable>
+		<name value="ValidFamilyName"/>
+		<description value="Enter a family name for valid Patient resources on the destination system."/>
+		<hint value="[Valid Family Name]"/>
+	</variable>
+	<variable>
+		<name value="ValidGivenName"/>
+		<description value="Enter a given name for valid Patient resources on the destination system."/>
+		<hint value="[Valid Family Name]"/>
+	</variable>
+	<variable>
+		<name value="ValidIdentifier"/>
+		<description value="Enter an identifier value for valid Patient resources on the destination system."/>
+		<hint value="[Valid Identifier]"/>
+	</variable>
+	<test id="01-PatientSearchFamily">
+		<name value="01-PatientSearchFamily" />
+		<description value="Search for Patient resources in JSON format using the 'family' search parameter. The expected response code is 200 (OK) with a response payload containing a searchset Bundle resource with at least one matching Patient in JSON format." />
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="search" />
+				</type>
+				<resource value="Patient" />
+				<description value="Search for Patients by family name." />
+				<accept value="json" />
+				<contentType value="none" />
+				<params value="?family=${ValidFamilyName}" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)." />
+				<direction value="response" />
+				<response value="okay" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned content format is JSON ('application/fhir+json')." />
+				<direction value="response" />
+				<contentType value="json" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the response payload contains the Bundle resource type." />
+				<direction value="response" />
+				<resource value="Bundle" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle conforms to the base FHIR specification."/>
+				<direction value="response"/>
+				<validateProfileId value="bundle-profile"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle.type is searchset."/>
+				<direction value="response"/>
+				<path value=".type"/>
+				<value value="searchset"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Using FHIRPath against Bundle.entry, confirm that there is at least one record returned."/>
+				<direction value="response"/>
+				<expression value="Bundle.entry.count()"/>
+				<operator value="greaterThan"/>
+				<value value="0"/>
+			</assert>
+		</action>
+	</test>
+	<test id="02-PatientSearchFamilyGiven">
+		<name value="02-PatientSearchFamilyGiven" />
+		<description value="Search for Patient resources in JSON format using the 'family' and 'given' search parameters. The expected response code is 200 (OK) with a response payload containing a searchset Bundle resource with at least one matching Patient in JSON format." />
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="search" />
+				</type>
+				<resource value="Patient" />
+				<description value="Search for Patients by family and given name." />
+				<accept value="json" />
+				<contentType value="none" />
+				<params value="?family=${ValidFamilyName}&amp;given=${ValidGivenName}" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)." />
+				<direction value="response" />
+				<response value="okay" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned content format is JSON ('application/fhir+json')." />
+				<direction value="response" />
+				<contentType value="json" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the response payload contains the Bundle resource type." />
+				<direction value="response" />
+				<resource value="Bundle" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle conforms to the base FHIR specification."/>
+				<direction value="response"/>
+				<validateProfileId value="bundle-profile"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle.type is searchset."/>
+				<direction value="response"/>
+				<path value=".type"/>
+				<value value="searchset"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Using FHIRPath against Bundle.entry, confirm that there is at least one record returned."/>
+				<direction value="response"/>
+				<expression value="Bundle.entry.count()"/>
+				<operator value="greaterThan"/>
+				<value value="0"/>
+			</assert>
+		</action>
+	</test>
+	<test id="03-PatientSearchIdentifier">
+		<name value="03-PatientSearchIdentifier" />
+		<description value="Search for Patient resources in JSON format using the 'identifier' search parameter. The expected response code is 200 (OK) with a response payload containing a searchset Bundle resource with at least one matching Patient in JSON format." />
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="search" />
+				</type>
+				<resource value="Patient" />
+				<description value="Search for Patients by identifier." />
+				<accept value="json" />
+				<contentType value="none" />
+				<params value="?family=${ValidIdentifier}" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)." />
+				<direction value="response" />
+				<response value="okay" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned content format is JSON ('application/fhir+json')." />
+				<direction value="response" />
+				<contentType value="json" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the response payload contains the Bundle resource type." />
+				<direction value="response" />
+				<resource value="Bundle" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle conforms to the base FHIR specification."/>
+				<direction value="response"/>
+				<validateProfileId value="bundle-profile"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle.type is searchset."/>
+				<direction value="response"/>
+				<path value=".type"/>
+				<value value="searchset"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Using FHIRPath against Bundle.entry, confirm that there is at least one record returned."/>
+				<direction value="response"/>
+				<expression value="Bundle.entry.count()"/>
+				<operator value="greaterThan"/>
+				<value value="0"/>
+			</assert>
+		</action>
+	</test>
+</TestScript>
