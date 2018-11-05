@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="fhir3-0-1-testing-04-validation-01-valid-patient-read-json" />
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>FHIR Dev Days 2018 - FHIR Testing Track - FHIR v3.0.1 Validation with Valid Patient read JSON</p>
+		</div>
+	</text>
+
+	<url value="https://wildfhir.aegis.net/fhir3-0-1/TestScript/fhir3-0-1-testing-04-validation-01-valid-patient-read-json" />
+	<name value="fhir3-0-1-testing-04-validation-01-valid-patient-read-json" />
+	<status value="active" />
+	<date value="2018-11-01" />
+	<publisher value="AEGIS.net, Inc." />
+	<contact>
+		<name value="Touchstone Support" />
+		<telecom>
+			<system value="email" />
+			<value value="Touchstone_Support@aegis.net" />
+			<use value="work" />
+		</telecom>
+	</contact>
+	<description value="FHIR Dev Days 2018 - FHIR Testing Track - FHIR v3.0.1 - Test Validation use of profiles with a Patient read in JSON format using a dynamic variable for a known Patient resource id. NOTE: the profile validation is expected to pass." />
+	<copyright value="(c) AEGIS.net, Inc. 2018"/>
+
+	<profile id="patient-profile">
+		<reference value="http://hl7.org/fhir/StructureDefinition/Patient" />
+	</profile>
+
+	<variable>
+		<name value="patientResourceId" />
+		<description value="Enter the known Patient FHIR resource id to read." />
+		<hint value="[Resource Id]" />
+	</variable>
+
+	<test id="PatientReadValidWithProfile">
+		<name value="PatientReadValidWithProfile" />
+		<description value="Read a known Patient in JSON format using user entered FHIR resource id. The expected response code is 200 (OK) with a response payload containing the Patient resource in JSON format." />
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="read" />
+				</type>
+				<resource value="Patient" />
+				<description value="Read the known Patient resource" />
+				<accept value="json" />
+				<contentType value="none" />
+				<params value="/${patientResourceId}" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)." />
+				<direction value="response" />
+				<response value="okay" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned content format is JSON ('application/fhir+json')." />
+				<direction value="response" />
+				<contentType value="json" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned resource type is Patient." />
+				<direction value="response" />
+				<resource value="Patient" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Patient conforms to the base FHIR specification." />
+				<direction value="response" />
+				<validateProfileId value="patient-profile" />
+			</assert>
+		</action>
+	</test>
+</TestScript>

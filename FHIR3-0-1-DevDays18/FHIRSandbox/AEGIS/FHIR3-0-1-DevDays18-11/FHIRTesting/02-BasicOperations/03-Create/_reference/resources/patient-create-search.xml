@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patient xmlns="http://hl7.org/fhir">
+	<text>
+		<status value="additional"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>FHIR Testing - 02 Basic Operations - 03 Create - Patient Create Search - XML</p>
+		</div>
+	</text>
+	<identifier>
+		<value value="tdd-1-intro-03-patient-create-search-xml"/>
+	</identifier>
+	<active value="true"/>
+	<name>
+		<use value="official"/>
+		<family value="Testcreatesearchxml"/>
+		<given value="William"/>
+	</name>
+	<gender value="male"/>
+	<birthDate value="1986-05-02"/>
+</Patient>

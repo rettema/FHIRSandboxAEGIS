@@ -1,0 +1,26 @@
+{
+  "resourceType": "Patient",
+  "id": "${patientResourceId}",
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>FHIR Testing - 03 Workflow - Patient Update - JSON</p></div>"
+  },
+  "identifier": [
+    {
+      "value": "tdd-1-intro-06-patient-basic-workflow-json"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Testbasicjson",
+      "given": [
+        "Barrymore"
+      ]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1966-10-22",
+  "deceasedBoolean": true
+}

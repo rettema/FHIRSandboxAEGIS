@@ -1,0 +1,24 @@
+{
+  "resourceType": "Patient",
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>FHIR Testing - 04 Validation - Patient Create Negative - JSON</p></div>"
+  },
+  "identifier": [
+    {
+      "value": "tdd-1-intro-07-patient-create-negative-json"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "temporary",
+      "family": "Testcreateinvalid",
+      "given": [
+        "George"
+      ]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-01-41"
+}

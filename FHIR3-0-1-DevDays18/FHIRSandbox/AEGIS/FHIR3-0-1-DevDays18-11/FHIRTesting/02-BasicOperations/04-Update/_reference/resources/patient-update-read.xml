@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patient xmlns="http://hl7.org/fhir">
+	<id value="${patientResourceId}" />
+	<text>
+		<status value="additional"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>FHIR Testing - 02 Basic Operations - 04 Update - Patient Update - XML</p>
+		</div>
+	</text>
+	<identifier>
+		<value value="tdd-1-intro-04-patient-update-xml"/>
+	</identifier>
+	<active value="true"/>
+	<name>
+		<use value="official"/>
+		<family value="Testupdatexml"/>
+		<given value="Jackson"/>
+	</name>
+	<gender value="male"/>
+	<birthDate value="1991-12-30"/>
+</Patient>

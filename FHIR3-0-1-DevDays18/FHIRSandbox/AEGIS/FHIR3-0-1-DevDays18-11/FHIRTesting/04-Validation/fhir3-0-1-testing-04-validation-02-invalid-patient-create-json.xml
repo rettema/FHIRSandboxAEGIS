@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="fhir3-0-1-testing-04-validation-02-invalid-patient-create-json" />
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>FHIR Dev Days 2018 - FHIR Testing Track - FHIR v3.0.1 Validation with Invalid Patient create JSON</p>
+		</div>
+	</text>
+
+	<url value="https://wildfhir.aegis.net/fhir3-0-1/TestScript/fhir3-0-1-testing-04-validation-02-invalid-patient-create-json" />
+	<name value="fhir3-0-1-testing-04-validation-02-invalid-patient-create-json" />
+	<status value="active" />
+	<date value="2018-11-01" />
+	<publisher value="AEGIS.net, Inc." />
+	<contact>
+		<name value="Touchstone Support" />
+		<telecom>
+			<system value="email" />
+			<value value="Touchstone_Support@aegis.net" />
+			<use value="work" />
+		</telecom>
+	</contact>
+	<description value="FHIR Dev Days 2018 - FHIR Testing Track - FHIR v3.0.1 - Test Validation use of profiles with a Patient create in JSON format using a static fixture containing invalid contents. NOTE: the profile validation is expected to fail." />
+	<copyright value="(c) AEGIS.net, Inc. 2018"/>
+
+	<fixture id="patient-create">
+		<resource>
+			<reference value="./_reference/resources/patient-create-invalid.json" />
+		</resource>
+	</fixture>
+
+	<profile id="patient-profile">
+		<reference value="http://hl7.org/fhir/StructureDefinition/Patient" />
+	</profile>
+
+	<test id="PatientCreateInvalidWithProfile">
+		<name value="PatientCreateInvalidWithProfile" />
+		<description value="Create a Patient in JSON format using an invalid static fixture. The expected response code is a 4xx error. The response payload should contain an OperationOutcome resource in JSON format. PLEASE NOTE: THIS TEST IS EXPECTED TO FAIL." />
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes" />
+					<code value="create" />
+				</type>
+				<resource value="Patient" />
+				<description value="Create a Patient in JSON format using an invalid static fixture" />
+				<accept value="json" />
+				<contentType value="json" />
+				<sourceId value="patient-create" />
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the sent Patient conforms to the base FHIR specification. Warning only is true to allow test completion and user review of validation output." />
+				<direction value="request" />
+				<validateProfileId value="patient-profile" />
+				<warningOnly value="true" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is a 4xx error. The system under test is expected to also perform validation of the request payload and report any errors." />
+				<direction value="response" />
+				<operator value="greaterThan" />
+				<responseCode value="399" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned resource type is OperationOutcome. The system under test is expected to also perform validation of the request payload and return an OperationOutcome." />
+				<direction value="response" />
+				<resource value="OperationOutcome" />
+			</assert>
+		</action>
+	</test>
+</TestScript>

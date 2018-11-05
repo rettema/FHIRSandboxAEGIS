@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript
+	xmlns="http://hl7.org/fhir">
+	<id value="fhir3-0-1-testing-05-nictizmedmij-medication-overview-xml" />
+	<text>
+		<status value="generated"/>
+		<div
+			xmlns="http://www.w3.org/1999/xhtml">
+			<p>FHIR Dev Days 2018 - FHIR Testing Track - FHIR v3.0.1 Nictiz MedMij Medication Overview</p>
+			<p>NOTE: USED WITH PERMISSION; UNOFFICIAL COPY OF NICTIZ MEDMIJ TEST USING MANUALLY DEFINED PATIENT RESOURCE ID TO BE USED FOR DEMONSTRATION PURPOSES ONLY.</p>
+		</div>
+	</text>
+	<url value="https://wildfhir.aegis.net/fhir3-0-1/TestScript/fhir3-0-1-testing-05-nictizmedmij-medication-overview-xml"/>
+	<name value="fhir3-0-1-testing-05-nictizmedmij-medication-overview-xml"/>
+	<status value="active"/>
+	<date value="2018-11-02"/>
+	<publisher value="AEGIS.net, Inc." />
+	<contact>
+		<name value="Touchstone Support" />
+		<telecom>
+			<system value="email" />
+			<value value="Touchstone_Support@aegis.net" />
+			<use value="work" />
+		</telecom>
+	</contact>
+	<description value="FHIR Dev Days 2018 - FHIR Testing Track - FHIR v3.0.1 - MedMij Medication for FHIR STU3 (v3.0.1) - Scenario 1.2: Retrieve MedicationOverview - XML Format - All resources that belong to the MedicationOverview of [a known Patient]. Response consists of a MedicationOverview Bundle. NOTE: USED WITH PERMISSION; UNOFFICIAL COPY OF NICTIZ MEDMIJ TEST USING MANUALLY DEFINED PATIENT RESOURCE ID TO BE USED FOR DEMONSTRATION PURPOSES ONLY."/>
+	<copyright value="(c) Nictiz 2018, AEGIS.net, Inc. 2018"/>
+
+	<origin>
+		<index value="1" />
+		<profile>
+			<system value="http://hl7.org/fhir/testscript-profile-origin-types"/>
+			<code value="FHIR-Client"/>
+		</profile>
+	</origin>
+	<destination>
+		<index value="1" />
+		<profile>
+			<system value="http://hl7.org/fhir/testscript-profile-destination-types"/>
+			<code value="FHIR-Server"/>
+		</profile>
+	</destination>
+
+	<profile id="Bundle-profile">
+		<reference value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+	</profile>
+
+	<variable>
+		<name value="Patient-id" />
+		<defaultValue value="example" />
+		<description value="Enter the known Patient FHIR resource id to read." />
+		<hint value="[Resource Id]" />
+	</variable>
+
+	<test id="01-Retrieve-MedicationOverview">
+		<name value="01-Retrieve-MedicationOverview"/>
+		<description value="Test PHR Client retrieve search operation for all a MedicationOverview, using the $medication-overview operation of XXX_Jangi. The expected response code is 200(OK) and content is a MedicationOverview Bundle, returned in XML format."/>
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes"/>
+					<code value="search"/>
+				</type>
+				<description value="PHR client retrieve search operation for a MedicationOverview using the $medication-overview operation."/>
+				<accept value="xml"/>
+				<contentType value="none" />
+				<destination value="1" />
+				<origin value="1" />
+				<params value="$medication-overview?patient=${Patient-id}"/>
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the client requested an Accept of the FHIR XML mime type 'application/fhir+xml'."/>
+				<direction value="request"/>
+				<headerField value="Accept"/>
+				<operator value="contains"/>
+				<value value="application/fhir+xml"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the client did not request a Content-Type. Warning only to allow for systems that automatically send Content-Type."/>
+				<direction value="request"/>
+				<headerField value="Content-Type"/>
+				<operator value="empty"/>
+				<warningOnly value="true"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that HTTP header Authorization contains the patient token ${Patient-id}. WARNING ONLY - NICTIZ MEDMIJ REQUIREMENT IGNORED FOR DEMO TESTING."/>
+				<direction value="request"/>
+				<headerField value="Authorization"/>
+				<value value="${Patient-id}"/>
+				<warningOnly value="true"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the Observation query parameter 'patient=' was not present to avoid BSNs in the URL. WARNING ONLY - NICTIZ MEDMIJ REQUIREMENT IGNORED FOR DEMO TESTING."/>
+				<direction value="request"/>
+				<operator value="notContains"/>
+				<requestURL value="patient="/>
+				<warningOnly value="true"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the Observation query parameter 'subject=' was not present to avoid BSNs in the URL. WARNING ONLY - NICTIZ MEDMIJ REQUIREMENT IGNORED FOR DEMO TESTING."/>
+				<direction value="request"/>
+				<operator value="notContains"/>
+				<requestURL value="subject="/>
+				<warningOnly value="true"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)." />
+				<direction value="response" />
+				<responseCode value="200" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP Header Content-Type contains the FHIR mime-type 'application/fhir+xml'." />
+				<direction value="response" />
+				<contentType value="xml" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned resource type is Bundle." />
+				<direction value="response" />
+				<resource value="Bundle" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle type is searchset" />
+				<direction value="response" />
+				<expression value="Bundle.type" />
+				<operator value="equals" />
+				<value value="searchset" />
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle conforms to the base FHIR specification. WARNING ONLY - NICTIZ MEDMIJ REQUIREMENT IGNORED FOR DEMO TESTING." />
+				<direction value="response" />
+				<validateProfileId value="Bundle-profile" />
+				<warningOnly value="true"/>
+			</assert>
+		</action>
+	</test>
+</TestScript>
