@@ -1,79 +1,281 @@
 [
   {
-    "accessToken":"2588b52d-c5ef-4cfa-84d4-acf8419a72e9",
-    "resourceId":"example-eAfspraken-kwalificatie1",
+    "accessToken":"Bearer 2588b52d-c5ef-4cfa-84d4-acf8419a72e9",
+    "resourceId":"example-eAfspraak-kwalificatie1",
     "familyName":"XXX_Verweij",
     "bsn":"999911533",
-    "qualificationScript":"eAfspraken"
+    "qualificationScript":"MedMij eAfspraken"
   },
   {
-    "accessToken":"48a1fb8a-82e5-4e72-b560-4924279bb57e",
-    "resourceId":"example-eAfspraken-kwalificatie2",
+    "accessToken":"Bearer 48a1fb8a-82e5-4e72-b560-4924279bb57e",
+    "resourceId":"example-eAfspraak-kwalificatie2",
     "familyName":"XXX_Zalentein",
     "bsn":"999911582",
-    "qualificationScript":"eAfspraken"
+    "qualificationScript":"MedMij eAfspraken"
   },
   {
-    "accessToken":"ed772f1e-5c86-4a0b-af36-4a05a2059191",
-    "resourceId":"example-eAfspraken-kwalificatie3",
+    "accessToken":"Bearer ed772f1e-5c86-4a0b-af36-4a05a2059191",
+    "resourceId":"example-eAfspraak-kwalificatie3",
     "familyName":"XXX_Egmond",
     "bsn":"999911594",
-    "qualificationScript":"eAfspraken"
+    "qualificationScript":"MedMij eAfspraken"
   },
   {
-    "accessToken":"f92b6141-55db-46d5-a3ae-874b69907d22",
+    "accessToken":"Bearer f92b6141-55db-46d5-a3ae-874b69907d22",
     "resourceId":"example-pdfa-kwalificatie1",
     "familyName":"XXX_Baltus",
     "bsn":"999910796",
-    "qualificationScript":"PDF/A"
+    "qualificationScript":"MedMij PDF/A"
   },
   {
-    "accessToken":"aae7b5aa-d796-4fba-b4d3-852d9043ee66",
+    "accessToken":"Bearer aae7b5aa-d796-4fba-b4d3-852d9043ee66",
     "resourceId":"example-pdfa-kwalificatie2",
     "familyName":"XXX_Schulte",
     "bsn":"999910784",
-    "qualificationScript":"PDF/A"
+    "qualificationScript":"MedMij PDF/A"
   },
   {
-    "accessToken":"84b0da5a-3816-49ba-9df4-88bc089dd401",
+    "accessToken":"Bearer 84b0da5a-3816-49ba-9df4-88bc089dd401",
     "resourceId":"example-pdfa-kwalificatie3",
     "familyName":"XXX_Ellens",
     "bsn":"999910863",
-    "qualificationScript":"PDF/A"
+    "qualificationScript":"MedMij PDF/A"
   },
   {
-    "accessToken":"93cde269-ce35-4077-a39d-19296670e949",
+    "accessToken":"Bearer 93cde269-ce35-4077-a39d-19296670e949",
     "resourceId":"medmij-bgz-patient-ts-01",
     "familyName":"XXX_Helleman",
     "bsn":"999911120",
-    "qualificationScript":"BGZ"
+    "qualificationScript":"MedMij BGZ"
   },
   {
-    "accessToken":"6056a9eb-da6a-45dc-b557-e854e138af8f",
+    "accessToken":"Bearer 6056a9eb-da6a-45dc-b557-e854e138af8f",
     "resourceId":"medmij-bgz-patient-ts-02",
     "familyName":"XXX_Mesker",
     "bsn":"999911284",
-    "qualificationScript":"BGZ"
+    "qualificationScript":"MedMij BGZ"
   },
   {
-    "accessToken":"d9f8d61b-c236-489f-aba5-b3bebd312c30",
+    "accessToken":"Bearer d9f8d61b-c236-489f-aba5-b3bebd312c30",
     "resourceId":"selfmeasurement-patient-kwalificatie1",
     "familyName":"XXX_Bourgonjee",
     "bsn":"999911302",
-    "qualificationScript":"Zelfmetingen"
+    "qualificationScript":"MedMij Zelfmetingen"
   },
   {
-    "accessToken":"14bc6cc6-7b7b-4c29-b662-c5284d76cf3c",
+    "accessToken":"Bearer 14bc6cc6-7b7b-4c29-b662-c5284d76cf3c",
     "resourceId":"laboratoryresults-patient-kwalificatie1",
     "familyName":"XXX_Aantrekker",
     "bsn":"999910450",
-    "qualificationScript":"Lab"
+    "qualificationScript":"MedMij Lab"
   },
   {
-    "accessToken":"0aed465d-aab0-4417-9b3c-e6f635892fea",
+    "accessToken":"Bearer 0aed465d-aab0-4417-9b3c-e6f635892fea",
     "resourceId":"gpdata-patient-kwalificatie1",
     "familyName":"XXX_Cevat",
     "bsn":"999911132",
-    "qualificationScript":"Huisarts"
+    "qualificationScript":"MedMij Huisarts"
+  },
+  {
+    "accessToken":"Bearer 5d0d5475-9609-4e91-bbca-c466ed704952",
+    "resourceId":"XXX-Yong",
+    "familyName":"XXX_Yong",
+    "bsn":"999911776",
+    "qualificationScript":"MedMij AllergyIntolerance"
+  },
+  {
+    "accessToken":"Bearer c980c4c9-a6d7-41d2-b541-5284f33b2f75",
+    "resourceId":"XXX-Bourgonje",
+    "familyName":"XXX_Bourgonje",
+    "bsn":"999911296",
+    "qualificationScript":"MedMij Medication"
+  },
+  {
+    "accessToken":"Bearer 31d4a33c-75a7-44a0-ba5c-2722971a0b85",
+    "resourceId":"XXX-Gobee",
+    "familyName":"XXX_Gobee",
+    "bsn":"999911314",
+    "qualificationScript":"MedMij Medication"
+  },
+  {
+    "accessToken":"Bearer e2696872-f855-4283-a01b-c0db9c50bde2",
+    "resourceId":"XXX-Dirksz",
+    "familyName":"XXX_Dirksz",
+    "bsn":"999911326",
+    "qualificationScript":"MedMij Medication"
+  },
+  {
+    "accessToken":"Bearer b086604e-af06-48ae-bb7a-d099b4ebbf89",
+    "resourceId":"XXX-Strengersz",
+    "familyName":"XXX_Strengersz",
+    "bsn":"999911338",
+    "qualificationScript":"MedMij Medication"
+  },
+  {
+    "accessToken":"Bearer 72538476-32d0-4f7f-80c7-bb12a1872d8e",
+    "resourceId":"XXX-Ruys",
+    "familyName":"XXX_Ruys",
+    "bsn":"999911351",
+    "qualificationScript":"MedMij Medication"
+  },
+  {
+    "accessToken":"Bearer 56fddbdf-cf49-41e1-b261-5ff7466c54a5",
+    "resourceId":"XXX-Cnossen",
+    "familyName":"XXX_Cnossen",
+    "bsn":"999911740",
+    "qualificationScript":"MedMij Medication"
+  },
+  {
+    "accessToken":"Bearer 9981f7ad-f22b-4a99-be31-68145536f9de",
+    "resourceId":"XXX-Kilkenny",
+    "familyName":"XXX_Kilkenny",
+    "bsn":"999911752",
+    "qualificationScript":"MedMij Medication"
+  },
+  {
+    "accessToken":"Bearer d30f66ca-288d-44ea-aae0-659400d3ff42",
+    "resourceId":"XXX-Amaya",
+    "familyName":"XXX_Amaya",
+    "bsn":"999911764",
+    "qualificationScript":"MedMij Medication"
+  },
+  {
+    "accessToken":"Bearer 8ec5a385-5642-4132-9100-c69f7fdb06da",
+    "resourceId":"XXX-Jangi",
+    "familyName":"XXX_Jangi",
+    "bsn":"999911727",
+    "qualificationScript":"MedMij Medication"
+  },
+  {
+    "accessToken":"Bearer 453863d0-0aa1-42e4-9201-7ca7e061520c",
+    "resourceId":"ADELAAR",
+    "familyName":"Adelaar",
+    "qualificationScript":"MedMij Medication"
+  },
+   {
+    "accessToken":"Bearer b373ae26-3452-4c19-8865-806aa503b9d0",
+    "resourceId":"BERKEN",
+    "familyName":"van der Berken",
+    "qualificationScript":"MedMij Medication"
+  },
+   {
+    "accessToken":"Bearer 3c5c5d2d-587a-4aa0-9aa0-a4ec0641531f",
+    "resourceId":"CREIENS",
+    "familyName":"Creiens",
+    "qualificationScript":"MedMij Medication"
+  },
+   {
+    "accessToken":"Bearer 088c319c-e22d-4d8b-b65c-c3f2d76b7ec6",
+    "resourceId":"DIREN",
+    "familyName":"Direnç",
+    "qualificationScript":"MedMij Medication"
+  },
+    {
+    "accessToken":"Bearer 2ecfcf66-af45-4290-ab7c-6b7c3d10a452",
+    "resourceId":"HENEGOUWEN",
+    "familyName":"van Henegouwen",
+    "qualificationScript":"MedMij Medication"
+  },
+    {
+    "accessToken":"Bearer acc0c081-ece5-4760-bfd9-ce61d1450406",
+    "resourceId":"SLUIS",
+    "familyName":"van der Sluis",
+    "qualificationScript":"MedMij Medication"
+  },
+    {
+    "accessToken":"Bearer dcdfe220-0fb9-470c-8721-08fd966fbea1",
+    "resourceId":"VEENOORD",
+    "familyName":"Veenoord",
+    "qualificationScript":"MedMij Medication"
+  },
+    {
+    "accessToken":"Bearer acd68d8c-9394-4aee-8aa7-f7f81183e0d3",
+    "resourceId":"XXX-BEKKER",
+    "familyName":"XXX_BEKKER",
+    "qualificationScript":"MedMij Medication"
+  },
+  {
+    "accessToken":"Bearer 6fc70c51-bdda-422e-9eaa-899fe24c4ef9",
+    "resourceId":"XXX-Bals",
+    "familyName":"XXX_Bals",
+    "bsn":"999911478",
+    "qualificationScript":"MedMij GGZ"
+  },
+  {
+    "accessToken":"Bearer 55180ef6-52b9-4ce2-954f-7f623b568bef",
+    "resourceId":"XXX-Walsen",
+    "familyName":"XXX_Walsen",
+    "bsn":"999911491",
+    "qualificationScript":"MedMij GGZ"
+  },
+  {
+    "accessToken":"Bearer 25337a23-71e8-4e5a-93c0-1c92d517924c",
+    "resourceId":"XXX-Camp",
+    "familyName":"XXX_Camp",
+    "bsn":"999911788",
+    "qualificationScript":"MedMij AllergyIntolerance"
+  },
+  {
+    "accessToken":"Bearer db8339a9-fc1a-4a89-ae4d-e03f379bd300",
+    "resourceId":"XXX-Herweijer",
+    "familyName":"XXX_Herweijer",
+    "bsn":"999911466",
+    "qualificationScript":"MedMij FHIR3-0-1-MedMij-Sandbox mp-sandbox"
+  },
+  {
+    "accessToken":"Bearer 1fdb1b0f-adea-4387-8445-fffacc6aed8b",
+    "resourceId":"XXX-Altenborg",
+    "familyName":"XXX_Altenborg",
+    "bsn":"999911612",
+    "qualificationScript":"MedMij FHIR3-0-1-MedMij-Sandbox mp-sandbox"
+  },
+  {
+    "accessToken":"Bearer f5b23d59-14ab-4386-9d67-a78cc656a557",
+    "resourceId":"XXX_Bakkerz",
+    "familyName":"XXX_Bakkerz",
+    "bsn":"999912008",
+    "qualificationScript":"MedMij BGZ"
+  },
+  {
+    "accessToken":"Bearer ce28d649-a3ba-4d9c-99e6-d31f6a70476f",
+    "resourceId":"XXX-Mutter",
+    "familyName":"XXX_Mutter",
+    "bsn":"999911673",
+    "qualificationScript":"MedMij BGLZ"
+  },
+  {
+    "accessToken":"Bearer e097ff15-c3a7-43a7-a190-70750e0be2c7",
+    "resourceId":"XXX-Valk",
+    "familyName":"XXX_Valk",
+    "bsn":"999911697",
+    "qualificationScript":"MedMij BGLZ"
+  },
+  {
+    "accessToken":"Bearer 02c3c955-5366-45be-a5ac-8522c8271641",
+    "resourceId":"XXX-Kesters",
+    "familyName":"XXX_Kesters",
+    "bsn":"999911703",
+    "qualificationScript":"MedMij BGLZ"
+  },
+  {
+    "accessToken":"Bearer 4777580a-690e-44ce-8a3c-1e29d420ab40",
+    "resourceId":"XXX-Altenborg",
+    "familyName":"XXX_Altenborg",
+    "bsn":"999911612",
+    "qualificationScript":"MedMij eOverdracht"
+  },
+  {
+    "accessToken":"Bearer 32c63064-7953-4f11-bf85-1ae7f23a8091",
+    "resourceId":"XXX-Sauter",
+    "familyName":"XXX_Sauter",
+    "bsn":"999911636",
+    "qualificationScript":"MedMij eOverdracht"
+  },
+  {
+    "accessToken":"Bearer bcabe321-ef23-44f0-9a14-3fe10b622d64",
+    "resourceId":"XXX-Buckle",
+    "familyName":"XXX_Buckle",
+    "bsn":"999911454",
+    "qualificationScript":"MedMij eOverdracht"
   }
 ]
