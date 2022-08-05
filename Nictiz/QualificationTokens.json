@@ -47,7 +47,7 @@
     "familyName": "XXX_Helleman",
     "bsn": "999911120",
     "qualificationScript": "MedMij BGZ",
-    "txOutcomeAck": true,
+    "txOutcomeAck": "true",
     "txOutcomeAckText": "Uw wijzigingsverzoek is ontvangen, neem voor meer informatie contact op met uw zorgaanbieder. Bij levensbedreigende situaties belt u 112."
   },
   {
@@ -249,7 +249,7 @@
     "familyName": "XXX_BEKKER",
     "bsn": "999911715",
     "qualificationScript": "MedMij Medication",
-    "txOutcomeAck": true,
+    "txOutcomeAck": "true",
     "txOutcomeAckText": "Uw wijzigingsverzoek is ontvangen, neem voor meer informatie contact op met uw zorgaanbieder. Bij levensbedreigende situaties belt u 112."
   },
   {
