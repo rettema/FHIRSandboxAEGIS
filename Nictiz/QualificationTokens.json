@@ -46,7 +46,7 @@
     "resourceId": "medmij-bgz-patient-ts-01",
     "familyName": "XXX_Helleman",
     "bsn": "999911120",
-    "qualificationScript": "MedMij BGZ"
+    "qualificationScript": "MedMij BGZ",
     "txOutcomeAck": true,
     "txOutcomeAckText": "Uw wijzigingsverzoek is ontvangen, neem voor meer informatie contact op met uw zorgaanbieder. Bij levensbedreigende situaties belt u 112."
   },
@@ -248,7 +248,7 @@
     "resourceId": "XXX-BEKKER",
     "familyName": "XXX_BEKKER",
     "bsn": "999911715",
-    "qualificationScript": "MedMij Medication"
+    "qualificationScript": "MedMij Medication",
     "txOutcomeAck": true,
     "txOutcomeAckText": "Uw wijzigingsverzoek is ontvangen, neem voor meer informatie contact op met uw zorgaanbieder. Bij levensbedreigende situaties belt u 112."
   },
