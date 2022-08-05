@@ -249,6 +249,8 @@
     "familyName": "XXX_BEKKER",
     "bsn": "999911715",
     "qualificationScript": "MedMij Medication"
+    "txOutcomeAck": true,
+    "txOutcomeAckText": "Uw wijzigingsverzoek is ontvangen, neem voor meer informatie contact op met uw zorgaanbieder. Bij levensbedreigende situaties belt u 112."
   },
   {
     "accessToken": "Bearer bde481d0-311a-4ca4-9cd6-334db51b7f54",
