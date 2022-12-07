@@ -1,5 +1,12 @@
 [
   {
+    "accessToken": "Bearer 1238b52d-c5ef-4cfa-84d4-acf8419a72e9",
+    "resourceId": "example",
+    "familyName": "Chalmers",
+    "bsn": "999911123",
+    "qualificationScript": "MedMij eAfspraken"
+  },
+  {
     "accessToken": "Bearer 2588b52d-c5ef-4cfa-84d4-acf8419a72e9",
     "resourceId": "example-eAfspraak-kwalificatie1",
     "familyName": "XXX_Verweij",
